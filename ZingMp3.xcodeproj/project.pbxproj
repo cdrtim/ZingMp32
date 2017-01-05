@@ -7,17 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810E6D5E1E1DECB900C6DB64 /* duration.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D541E1DECB900C6DB64 /* duration.png */; };
+		810E6D5F1E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D551E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg */; };
+		810E6D601E1DECB900C6DB64 /* iconOnline.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D561E1DECB900C6DB64 /* iconOnline.png */; };
+		810E6D611E1DECB900C6DB64 /* maxVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D571E1DECB900C6DB64 /* maxVolume.png */; };
+		810E6D621E1DECB900C6DB64 /* minVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D581E1DECB900C6DB64 /* minVolume.png */; };
+		810E6D631E1DECB900C6DB64 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D591E1DECB900C6DB64 /* pause.png */; };
+		810E6D641E1DECB900C6DB64 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D5A1E1DECB900C6DB64 /* play.png */; };
+		810E6D651E1DECB900C6DB64 /* thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D5B1E1DECB900C6DB64 /* thumb.png */; };
+		810E6D661E1DECB900C6DB64 /* thumbHightLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D5C1E1DECB900C6DB64 /* thumbHightLight.png */; };
+		810E6D671E1DECB900C6DB64 /* zing-mp3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D5D1E1DECB900C6DB64 /* zing-mp3.jpg */; };
+		810E6D691E1DF06100C6DB64 /* tableViewOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D681E1DF06000C6DB64 /* tableViewOnline.swift */; };
+		810E6D851E1DF68E00C6DB64 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D7F1E1DF68E00C6DB64 /* TFHpple.m */; };
+		810E6D861E1DF68E00C6DB64 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D811E1DF68E00C6DB64 /* TFHppleElement.m */; };
+		810E6D871E1DF68E00C6DB64 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D831E1DF68E00C6DB64 /* XPathQuery.m */; };
+		810E6D881E1DF71E00C6DB64 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 810E6D7B1E1DF51700C6DB64 /* libxml2.2.dylib */; };
+		810E6D8A1E1DFF5700C6DB64 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D891E1DFF5700C6DB64 /* Song.swift */; };
 		81B02EF81E1CF9110062543E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B02EF71E1CF9110062543E /* AppDelegate.swift */; };
-		81B02EFA1E1CF9110062543E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B02EF91E1CF9110062543E /* ViewController.swift */; };
 		81B02EFD1E1CF9110062543E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B02EFB1E1CF9110062543E /* Main.storyboard */; };
 		81B02EFF1E1CF9110062543E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81B02EFE1E1CF9110062543E /* Assets.xcassets */; };
 		81B02F021E1CF9110062543E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B02F001E1CF9110062543E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		810E6D541E1DECB900C6DB64 /* duration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duration.png; sourceTree = "<group>"; };
+		810E6D551E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Full-color-phone-wallpaper.jpg"; sourceTree = "<group>"; };
+		810E6D561E1DECB900C6DB64 /* iconOnline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconOnline.png; sourceTree = "<group>"; };
+		810E6D571E1DECB900C6DB64 /* maxVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maxVolume.png; sourceTree = "<group>"; };
+		810E6D581E1DECB900C6DB64 /* minVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minVolume.png; sourceTree = "<group>"; };
+		810E6D591E1DECB900C6DB64 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		810E6D5A1E1DECB900C6DB64 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		810E6D5B1E1DECB900C6DB64 /* thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb.png; sourceTree = "<group>"; };
+		810E6D5C1E1DECB900C6DB64 /* thumbHightLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbHightLight.png; sourceTree = "<group>"; };
+		810E6D5D1E1DECB900C6DB64 /* zing-mp3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "zing-mp3.jpg"; sourceTree = "<group>"; };
+		810E6D681E1DF06000C6DB64 /* tableViewOnline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewOnline.swift; sourceTree = "<group>"; };
+		810E6D771E1DF36400C6DB64 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		810E6D791E1DF3C900C6DB64 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		810E6D7B1E1DF51700C6DB64 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
+		810E6D7D1E1DF68D00C6DB64 /* ZingMp3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZingMp3-Bridging-Header.h"; sourceTree = "<group>"; };
+		810E6D7E1E1DF68E00C6DB64 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		810E6D7F1E1DF68E00C6DB64 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		810E6D801E1DF68E00C6DB64 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		810E6D811E1DF68E00C6DB64 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		810E6D821E1DF68E00C6DB64 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		810E6D831E1DF68E00C6DB64 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		810E6D841E1DF68E00C6DB64 /* CrawlVideo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CrawlVideo-Bridging-Header.h"; sourceTree = "<group>"; };
+		810E6D891E1DFF5700C6DB64 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		81B02EF41E1CF9110062543E /* ZingMp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZingMp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B02EF71E1CF9110062543E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81B02EF91E1CF9110062543E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81B02EFC1E1CF9110062543E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81B02EFE1E1CF9110062543E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81B02F011E1CF9110062543E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,17 +66,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				810E6D881E1DF71E00C6DB64 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810E6D6B1E1DF32500C6DB64 /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				810E6D7E1E1DF68E00C6DB64 /* TFHpple.h */,
+				810E6D7F1E1DF68E00C6DB64 /* TFHpple.m */,
+				810E6D801E1DF68E00C6DB64 /* TFHppleElement.h */,
+				810E6D811E1DF68E00C6DB64 /* TFHppleElement.m */,
+				810E6D821E1DF68E00C6DB64 /* XPathQuery.h */,
+				810E6D831E1DF68E00C6DB64 /* XPathQuery.m */,
+				810E6D841E1DF68E00C6DB64 /* CrawlVideo-Bridging-Header.h */,
+				810E6D7D1E1DF68D00C6DB64 /* ZingMp3-Bridging-Header.h */,
+			);
+			path = Hpple;
+			sourceTree = "<group>";
+		};
+		810E6D761E1DF36400C6DB64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				810E6D791E1DF3C900C6DB64 /* libxml2.2.dylib */,
+				810E6D771E1DF36400C6DB64 /* libxml2.2.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		81B02EEB1E1CF9110062543E = {
 			isa = PBXGroup;
 			children = (
+				810E6D7B1E1DF51700C6DB64 /* libxml2.2.dylib */,
 				81B02EF61E1CF9110062543E /* ZingMp3 */,
 				81B02EF51E1CF9110062543E /* Products */,
+				810E6D761E1DF36400C6DB64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +118,34 @@
 		81B02EF61E1CF9110062543E /* ZingMp3 */ = {
 			isa = PBXGroup;
 			children = (
+				810E6D6B1E1DF32500C6DB64 /* Hpple */,
+				81B02F091E1CFB0B0062543E /* Resource */,
 				81B02EF71E1CF9110062543E /* AppDelegate.swift */,
-				81B02EF91E1CF9110062543E /* ViewController.swift */,
+				810E6D891E1DFF5700C6DB64 /* Song.swift */,
+				810E6D681E1DF06000C6DB64 /* tableViewOnline.swift */,
 				81B02EFB1E1CF9110062543E /* Main.storyboard */,
 				81B02EFE1E1CF9110062543E /* Assets.xcassets */,
 				81B02F001E1CF9110062543E /* LaunchScreen.storyboard */,
 				81B02F031E1CF9110062543E /* Info.plist */,
 			);
 			path = ZingMp3;
+			sourceTree = "<group>";
+		};
+		81B02F091E1CFB0B0062543E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				810E6D541E1DECB900C6DB64 /* duration.png */,
+				810E6D551E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg */,
+				810E6D561E1DECB900C6DB64 /* iconOnline.png */,
+				810E6D571E1DECB900C6DB64 /* maxVolume.png */,
+				810E6D581E1DECB900C6DB64 /* minVolume.png */,
+				810E6D591E1DECB900C6DB64 /* pause.png */,
+				810E6D5A1E1DECB900C6DB64 /* play.png */,
+				810E6D5B1E1DECB900C6DB64 /* thumb.png */,
+				810E6D5C1E1DECB900C6DB64 /* thumbHightLight.png */,
+				810E6D5D1E1DECB900C6DB64 /* zing-mp3.jpg */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +181,7 @@
 					81B02EF31E1CF9110062543E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = LGTFHWXLRR;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,8 +209,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				810E6D5F1E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg in Resources */,
+				810E6D671E1DECB900C6DB64 /* zing-mp3.jpg in Resources */,
+				810E6D641E1DECB900C6DB64 /* play.png in Resources */,
+				810E6D651E1DECB900C6DB64 /* thumb.png in Resources */,
 				81B02F021E1CF9110062543E /* LaunchScreen.storyboard in Resources */,
+				810E6D5E1E1DECB900C6DB64 /* duration.png in Resources */,
+				810E6D601E1DECB900C6DB64 /* iconOnline.png in Resources */,
+				810E6D621E1DECB900C6DB64 /* minVolume.png in Resources */,
+				810E6D631E1DECB900C6DB64 /* pause.png in Resources */,
+				810E6D611E1DECB900C6DB64 /* maxVolume.png in Resources */,
 				81B02EFF1E1CF9110062543E /* Assets.xcassets in Resources */,
+				810E6D661E1DECB900C6DB64 /* thumbHightLight.png in Resources */,
 				81B02EFD1E1CF9110062543E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81B02EFA1E1CF9110062543E /* ViewController.swift in Sources */,
+				810E6D8A1E1DFF5700C6DB64 /* Song.swift in Sources */,
+				810E6D861E1DF68E00C6DB64 /* TFHppleElement.m in Sources */,
+				810E6D691E1DF06100C6DB64 /* tableViewOnline.swift in Sources */,
+				810E6D871E1DF68E00C6DB64 /* XPathQuery.m in Sources */,
+				810E6D851E1DF68E00C6DB64 /* TFHpple.m in Sources */,
 				81B02EF81E1CF9110062543E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,11 +360,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LGTFHWXLRR;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = ZingMp3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pnh.ZingMp3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZingMp3/Hpple/ZingMp3-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -274,11 +377,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LGTFHWXLRR;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = ZingMp3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pnh.ZingMp3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZingMp3/Hpple/ZingMp3-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +408,7 @@
 				81B02F081E1CF9110062543E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
