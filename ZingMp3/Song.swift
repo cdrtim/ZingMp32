@@ -25,14 +25,20 @@ struct Song {
         self.thumbnail = UIImage(data: dataImg as! Data)!
         self.sourceOnline = source
     }
-    init (title: String, artistName: String, localThumbnail: String, localSource: String)
-    {
+
+    
+    init(title: String, artistName: String, localThumbnail: String, localSource: String){
         self.title = title
         self.artistName = artistName
-        _ = localThumbnail
-        let dataImg = NSData(contentsOfFile: self.localThumbnail)
-        self.thumbnail = UIImage(data: dataImg as! Data)!
+        self.localThumbnail = localThumbnail
+        print(self.localThumbnail)
+        let dataImage = NSData(contentsOfFile: self.localThumbnail)
+        print(dataImage)
+        self.thumbnail = UIImage(data: dataImage! as Data)!
+        
+ 
         self.sourceLocal = localSource
     }
+
     
 }

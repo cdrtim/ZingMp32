@@ -28,7 +28,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" id="uAm-fO-DFx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="uAm-fO-DFx">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uAm-fO-DFx" id="9L9-Ah-alq">
@@ -38,6 +38,10 @@
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QjB-wx-saA" id="uo9-dD-m4l"/>
+                                    <outlet property="delegate" destination="QjB-wx-saA" id="yOp-Oy-95P"/>
+                                </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fso-Ug-tEX">
                                 <rect key="frame" x="0.0" y="490" width="375" height="128"/>
@@ -59,6 +63,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Download" image="iconDownload" id="Tah-O5-X5a"/>
+                    <connections>
+                        <outlet property="myTableView" destination="sa9-Kj-bWy" id="lbJ-he-BTe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4Z-CM-pSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

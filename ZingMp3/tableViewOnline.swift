@@ -120,13 +120,14 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         
     {
         // thao tac voi Plist
-        let dicData = NSMutableDictionary()
-        dicData.setValue(song.title, forKey: "title")
-        dicData.setValue(song.artistName, forKey: "artits")
-        dicData.setValue("/\(song.title)/thumbnail.png", forKey: "localThumbnail")
-        dicData.setValue(song.sourceOnline, forKey: "source")
+        let dictData = NSMutableDictionary()
+        dictData.setValue(song.title, forKey: "title")
+        dictData.setValue(song.artistName, forKey: "artistName")
+        dictData.setValue("/\(song.title)/thumbnail.png", forKey: "localThumbnail")
+        print("/\(song.title)/thumbnail.png")
+        dictData.setValue(song.sourceOnline, forKey: "sourceOnline")
         //writing info
-        writeDatatoPath(data: dicData, path: "\(path)/info.plist")
+        writeDatatoPath(data: dictData, path: "\(path)/info.plist")
 // writing thumbnail
         let dataThumbnail = NSData(data: UIImagePNGRepresentation(song.thumbnail)!)
         
