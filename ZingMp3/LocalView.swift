@@ -13,8 +13,10 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
-        // Do any additional setup after loading the view.
+    }
+    // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool  )
+    {   getData()
     }
     func getData()
     {
@@ -56,36 +58,46 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let audioPlay = AudioPlayer.sharedInstance
+        audioPlay.pathString = listSong[indexPath.row].sourceLocal
+        audioPlay.titleSong = listSong[indexPath.row].title + "(\(listSong[indexPath.row].artistName))"
+        audioPlay.setupAudio()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "setUpObjAudio"), object: nil)
+        
+    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let edit  = UITableViewRowAction(style: .normal, title: "Delete") {
             action, index in
             self.removeSongAtIndexPath(index: indexPath.row)
-            self.myTableView.reloadData()
             
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setUpObjAudio"), object: nil)
         }
         edit.backgroundColor = UIColor(red: 248/255, green: 55/255, blue: 186/255, alpha: 1.0)
         return [edit]
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     func removeSongAtIndexPath(index: Int)
     {
-    if let dir = kDOCUMENT_DIRECTORY_PATH
-    {
-        do{
-        let path  = dir + "/\(dir)/\(listSong[index].title)"
-            try FileManager.default.removeItem(atPath: path)
-            listSong.remove(at: index)
-            self.myTableView.reloadData()
-        
-        } catch let err as NSError
+        if let dir = kDOCUMENT_DIRECTORY_PATH
         {
-        print(err)
+            do{
+                let path  = "/\(dir)/\(listSong[index].title)"
+                try FileManager.default.removeItem(atPath: path)
+                listSong.remove(at: index)
+                self.myTableView.reloadData()
+                
+            } catch let err as NSError
+            {
+                print(err)
+                
+            }
+            
             
         }
         
-        
-        }
-    
     }
     
     

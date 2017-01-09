@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="-143" y="61"/>
         </scene>
-        <!--View Controller-->
+        <!--Audio Player View-->
         <scene sceneID="siW-Rz-RFD">
             <objects>
-                <viewController storyboardIdentifier="PlayAudio" id="vux-bh-HBK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayAudio" id="vux-bh-HBK" customClass="AudioPlayerView" customModule="ZingMp3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EBC-Ee-Esc"/>
                         <viewControllerLayoutGuide type="bottom" id="aQZ-MZ-Rad"/>
@@ -178,6 +178,9 @@
                                 <rect key="frame" x="58" y="30" width="203" height="31"/>
                                 <color key="minimumTrackTintColor" red="1" green="0.98268314970000004" blue="0.98256535310000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="1" green="0.77389349650000006" blue="0.96168081650000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sld_Duration:" destination="vux-bh-HBK" eventType="valueChanged" id="qQj-V1-V61"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2F-gP-tOW">
                                 <rect key="frame" x="8" y="35" width="56" height="21"/>
@@ -202,6 +205,9 @@
                                 <rect key="frame" x="6" y="98" width="312" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.99964730680000002" green="0.96745030880000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="1" green="0.77389349650000006" blue="0.96168081650000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sld_Volume:" destination="vux-bh-HBK" eventType="valueChanged" id="8s3-zc-dCv"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XL-nU-5jJ">
                                 <rect key="frame" x="147" y="64" width="30" height="30"/>
@@ -210,6 +216,9 @@
                                     <constraint firstAttribute="height" constant="30" id="dd6-YU-TxP"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="play.png"/>
+                                <connections>
+                                    <action selector="action_PlayPause:" destination="vux-bh-HBK" eventType="touchUpInside" id="ha6-HP-dIl"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9K6-2U-FUb">
                                 <rect key="frame" x="267" y="64" width="51" height="31"/>
@@ -219,6 +228,9 @@
                                 </constraints>
                                 <color key="onTintColor" red="1" green="0.98268314970000004" blue="0.98256535310000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" red="1" green="0.77389349650000006" blue="0.96168081650000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="Repeat:" destination="vux-bh-HBK" eventType="valueChanged" id="HMF-cR-kbK"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -250,10 +262,18 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="136"/>
+                    <connections>
+                        <outlet property="btn_Play" destination="3XL-nU-5jJ" id="lS8-db-Ygj"/>
+                        <outlet property="lbl_CurrentTime" destination="w2F-gP-tOW" id="Pf8-I3-jXW"/>
+                        <outlet property="lbl_TotalTime" destination="l2g-El-wgT" id="DO9-69-fTS"/>
+                        <outlet property="lbl_title" destination="GhP-uB-5De" id="t4l-GK-AJU"/>
+                        <outlet property="sld_Duration" destination="RQj-zq-MOR" id="Le4-bL-4cM"/>
+                        <outlet property="sld_Volume" destination="lfu-HU-F9b" id="y56-fI-T5J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="282-WV-TS0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904" y="-314"/>
+            <point key="canvasLocation" x="901" y="-363"/>
         </scene>
     </scenes>
     <resources>
@@ -265,6 +285,6 @@
         <image name="play.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nwa-b1-Bhu"/>
+        <segue reference="Zbc-fr-Pha"/>
     </inferredMetricsTieBreakers>
 </document>

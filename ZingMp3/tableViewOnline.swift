@@ -34,7 +34,7 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
                     {
                         print(err)
                     }
-                    //                print(stringData)
+                                    print(url!)
                     let json = self.convertStringtoDictionary(string: stringData)
                     if (json != nil)
                     {
@@ -46,11 +46,11 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         
     }
-    func getID(path: NSString ) -> String
+    func getID(path: NSString ) -> NSString
+        
     {
         let id = (path.lastPathComponent as NSString).deletingPathExtension
-        return id
-        
+        return id as NSString
     }
     func convertStringtoDictionary(string : String) -> [String: AnyObject]?
     {
@@ -70,9 +70,10 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         let artistName = json["artist"] as! String
         let thumbnail = json["thumbnail"] as! String
         let source = json["source"]!["128"] as! String
-        
-        let currentSong = Song(title: title, artistName: artistName, thumbnail: thumbnail, source: source)
-        listSong.append(currentSong)
+        let lyric = json["lyrics_file"] as! String
+        print(lyric)
+        let currentSong = Song(title: title, artistName: artistName, thumbnail: thumbnail, source: source, lyrics: lyric)
+            listSong.append(currentSong)
         DispatchQueue.main.async {
             self.myTableView.reloadData()
         }
@@ -80,26 +81,21 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     func downloadSong(_ index: Int)
     {
-        let dataSong =  try? Data(contentsOf: URL(string: listSong[index].sourceOnline)!)
+        let dataSong = try? Data(contentsOf: URL(string:listSong[index].sourceOnline)!)
         if let dir = kDOCUMENT_DIRECTORY_PATH {
-            //writing 
+            //writing
             let pathToWriteSong = "\(dir)/\(listSong[index].title)"
-            do
-            {
+            do {
                 try FileManager.default.createDirectory(atPath: pathToWriteSong, withIntermediateDirectories: false, attributes: nil)
-                
-            } catch let err as NSError
-            {
-            print(err.localizedDescription)
-                
+            } catch let error as NSError {
+                print(error.localizedDescription);
             }
             
-            // ghi bat hat
-            writeDatatoPath(data: dataSong! as NSData, path: "\(pathToWriteSong)/\(listSong[index].title).mp3")
-            writeInfoSong(song: listSong[index], path: pathToWriteSong )
-//
+            writeDatatoPath(data: dataSong! as NSObject, path: "\(pathToWriteSong)/\(listSong[index].title).mp3")
+            writeInfoSong(song: listSong[index], path: pathToWriteSong)
+            
         }
-       
+        
     }
     
     
@@ -108,13 +104,14 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     {
         if let dataToWrite = data as? NSData
         {
-        dataToWrite.write(toFile: path, atomically: true)
+            try? dataToWrite.write(to: URL(fileURLWithPath: path), options: [.atomic])
+            
         }
         else if let datainfro = data as? NSDictionary {
-        datainfro.write(toFile: path, atomically: true)
+            datainfro.write(toFile: path, atomically: true)
         }
-    
-    
+        
+        
     }
     func writeInfoSong(song: Song , path: String)
         
@@ -126,15 +123,35 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         dictData.setValue("/\(song.title)/thumbnail.png", forKey: "localThumbnail")
         print("/\(song.title)/thumbnail.png")
         dictData.setValue(song.sourceOnline, forKey: "sourceOnline")
+        dictData.setValue(song.lyric, forKey: "lyrics_file")
+
         //writing info
         writeDatatoPath(data: dictData, path: "\(path)/info.plist")
-// writing thumbnail
+        // writing thumbnail
         let dataThumbnail = NSData(data: UIImagePNGRepresentation(song.thumbnail)!)
         
         writeDatatoPath(data: dataThumbnail, path: "\(path)/thumbnail.png")
-    }
+        
+        
+        var returnString = "Không có lời. Ahihi"
+        if song.lyric != "" {
+            let url = URL(string: song.lyric)!
+            //            returnString = try! String(contentsOf: url, encoding: NSUTF8StringEncoding)
+            returnString = try! String(contentsOf: url, encoding: String.Encoding.utf8)
+            print(url)
+        }
+        
+        // download + write to file
+        
+        do {
+            
+            try returnString.write(toFile: "\(path)/lyrics_file.txt", atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("xyz")
+        }}
     
     
+
     
     // UItableViewDelegate
     //    func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,12 +162,21 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.imageView?.image = listSong[indexPath.row].thumbnail
-        cell.textLabel?.text = listSong[indexPath.row].title
+        cell.textLabel?.text = "\(listSong[indexPath.row].title) Ca Sỹ: \(listSong[indexPath.row].artistName)"
+
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listSong.count
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let audioPlayer = AudioPlayer.sharedInstance
+        audioPlayer.pathString = listSong[indexPath.row].sourceOnline
+        audioPlayer.titleSong = "\(listSong[indexPath.row].title) Ca sy: \(listSong[indexPath.row].artistName)"
+        audioPlayer.setupAudio()
+        
+        NotificationCenter.default.post(name:  Notification.Name(rawValue: "setUpObjAudio"), object: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -165,5 +191,8 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         edit.backgroundColor = UIColor(red: 248/255, green: 55/255, blue: 186/255, alpha: 1.0)
         return [edit]
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }

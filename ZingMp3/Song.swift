@@ -15,10 +15,13 @@ struct Song {
     var sourceOnline  = ""
     var sourceLocal = ""
     var localThumbnail  = ""
+    var lyric = ""
     let baseThumbnail = "http://zmp3-photo.d.za.zdn.vn/"
-    init (title: String, artistName: String, thumbnail: String, source: String)
+    init (title: String, artistName: String, thumbnail: String, source: String, lyrics: String)
     {
         self.title = title
+        self.lyric = lyrics
+        print(lyrics)
         self.artistName = artistName
         let thumbnailURL = baseThumbnail+thumbnail
         let dataImg = NSData(contentsOf: NSURL(string: thumbnailURL)! as URL)
@@ -33,7 +36,7 @@ struct Song {
         self.localThumbnail = localThumbnail
         print(self.localThumbnail)
         let dataImage = NSData(contentsOfFile: self.localThumbnail)
-        print(dataImage)
+//        print(dataImage)
         self.thumbnail = UIImage(data: dataImage! as Data)!
         
  
