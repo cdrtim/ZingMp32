@@ -21,7 +21,7 @@ struct Song {
     {
         self.title = title
         self.lyric = lyrics
-        print(lyrics)
+//        print(lyrics)
         self.artistName = artistName
         let thumbnailURL = baseThumbnail+thumbnail
         let dataImg = NSData(contentsOf: NSURL(string: thumbnailURL)! as URL)
@@ -30,11 +30,12 @@ struct Song {
     }
 
     
-    init(title: String, artistName: String, localThumbnail: String, localSource: String){
+    init(title: String, artistName: String, localThumbnail: String, localSource: String, lyrics: String){
         self.title = title
+        self.lyric = lyrics
         self.artistName = artistName
         self.localThumbnail = localThumbnail
-        print(self.localThumbnail)
+//        print(self.localThumbnail)
         let dataImage = NSData(contentsOfFile: self.localThumbnail)
 //        print(dataImage)
         self.thumbnail = UIImage(data: dataImage! as Data)!

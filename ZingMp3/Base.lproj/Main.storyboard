@@ -49,6 +49,22 @@
                                     <segue destination="vux-bh-HBK" kind="embed" id="nwa-b1-Bhu"/>
                                 </connections>
                             </containerView>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joh-Sf-Tc5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="U0e-1Z-Y68">
+                                        <rect key="frame" x="8" y="161" width="359" height="283"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.99165939327402364" green="1" blue="0.979289061310889" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -64,7 +80,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Download" image="iconDownload" id="Tah-O5-X5a"/>
                     <connections>
+                        <outlet property="blurView" destination="joh-Sf-Tc5" id="f0o-qK-neQ"/>
                         <outlet property="myTableView" destination="sa9-Kj-bWy" id="lbJ-he-BTe"/>
+                        <outlet property="txtfield_lyric" destination="U0e-1Z-Y68" id="KRE-b7-PfQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4Z-CM-pSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,6 +139,21 @@
                                     <outlet property="delegate" destination="0bM-0O-hyl" id="2Ug-sT-c5k"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-6e-eaq">
+                                <rect key="frame" x="0.0" y="86" width="375" height="409"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MLt-eU-e6c">
+                                        <rect key="frame" x="8" y="83" width="359" height="283"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.99165939329999997" green="1" blue="0.97928906130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LW-Od-LwB">
                                 <rect key="frame" x="0.0" y="490" width="375" height="128"/>
                                 <connections>
@@ -142,12 +175,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Online" image="iconOnline" id="yjA-p9-sG8"/>
                     <connections>
+                        <outlet property="blurView" destination="Htf-6e-eaq" id="awG-Zg-zCn"/>
                         <outlet property="myTableView" destination="6Sq-bh-lco" id="7qO-oY-rXp"/>
+                        <outlet property="txtLyric" destination="MLt-eU-e6c" id="efO-Jl-fme"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfi-St-aM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-143" y="61"/>
+            <point key="canvasLocation" x="-143.19999999999999" y="60.719640179910051"/>
         </scene>
         <!--Audio Player View-->
         <scene sceneID="siW-Rz-RFD">
@@ -232,6 +267,18 @@
                                     <action selector="Repeat:" destination="vux-bh-HBK" eventType="valueChanged" id="HMF-cR-kbK"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO6-tF-hrA">
+                                <rect key="frame" x="16" y="68" width="21" height="22"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="ATZ-NY-nXc"/>
+                                    <constraint firstAttribute="height" constant="22" id="ZCg-LO-cif"/>
+                                </constraints>
+                                <state key="normal" image="lyric.png"/>
+                                <connections>
+                                    <action selector="action_ShowLyric:" destination="vux-bh-HBK" eventType="touchUpInside" id="v3M-8Y-mee"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -245,6 +292,7 @@
                             <constraint firstItem="3XL-nU-5jJ" firstAttribute="top" secondItem="RQj-zq-MOR" secondAttribute="bottom" constant="4" id="WJc-eN-oMU"/>
                             <constraint firstItem="9K6-2U-FUb" firstAttribute="centerY" secondItem="3XL-nU-5jJ" secondAttribute="centerY" id="Xs2-mK-aP0"/>
                             <constraint firstItem="3XL-nU-5jJ" firstAttribute="centerX" secondItem="RQj-zq-MOR" secondAttribute="centerX" constant="2.5" id="aEg-4u-Z15"/>
+                            <constraint firstItem="lfu-HU-F9b" firstAttribute="top" secondItem="mO6-tF-hrA" secondAttribute="bottom" constant="8" id="abD-P4-Rs2"/>
                             <constraint firstItem="RQj-zq-MOR" firstAttribute="centerY" secondItem="w2F-gP-tOW" secondAttribute="centerY" id="bcg-na-Uks"/>
                             <constraint firstItem="GcZ-tN-AV8" firstAttribute="leading" secondItem="14r-bA-7lZ" secondAttribute="leadingMargin" constant="-20" id="dAL-8R-rYU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lfu-HU-F9b" secondAttribute="trailing" constant="-12" id="dvm-Tb-q3J"/>
@@ -252,7 +300,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="GhP-uB-5De" secondAttribute="trailing" constant="-8" id="ipv-Ss-DvH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GcZ-tN-AV8" secondAttribute="trailing" constant="-20" id="k6V-dC-blW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9K6-2U-FUb" secondAttribute="trailing" constant="-12" id="lM7-PP-72r"/>
+                            <constraint firstItem="mO6-tF-hrA" firstAttribute="leading" secondItem="14r-bA-7lZ" secondAttribute="leading" constant="16" id="leb-4h-ld4"/>
                             <constraint firstItem="l2g-El-wgT" firstAttribute="centerY" secondItem="w2F-gP-tOW" secondAttribute="centerY" id="qSd-eW-inO"/>
+                            <constraint firstItem="mO6-tF-hrA" firstAttribute="top" secondItem="w2F-gP-tOW" secondAttribute="bottom" constant="12" id="rE9-5S-3r2"/>
                             <constraint firstItem="lfu-HU-F9b" firstAttribute="centerX" secondItem="RQj-zq-MOR" secondAttribute="centerX" constant="2.5" id="twm-0S-X0S"/>
                             <constraint firstItem="l2g-El-wgT" firstAttribute="leading" secondItem="RQj-zq-MOR" secondAttribute="trailing" constant="10" id="wwm-5D-jqr"/>
                             <constraint firstItem="lfu-HU-F9b" firstAttribute="leading" secondItem="14r-bA-7lZ" secondAttribute="leadingMargin" constant="-8" id="ymu-Ys-XUc"/>
@@ -264,6 +314,7 @@
                     <size key="freeformSize" width="320" height="136"/>
                     <connections>
                         <outlet property="btn_Play" destination="3XL-nU-5jJ" id="lS8-db-Ygj"/>
+                        <outlet property="btn_lyric" destination="mO6-tF-hrA" id="gqJ-GS-GH4"/>
                         <outlet property="lbl_CurrentTime" destination="w2F-gP-tOW" id="Pf8-I3-jXW"/>
                         <outlet property="lbl_TotalTime" destination="l2g-El-wgT" id="DO9-69-fTS"/>
                         <outlet property="lbl_title" destination="GhP-uB-5De" id="t4l-GK-AJU"/>
@@ -273,13 +324,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="282-WV-TS0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="901" y="-363"/>
+            <point key="canvasLocation" x="900.79999999999995" y="-363.41829085457272"/>
         </scene>
     </scenes>
     <resources>
         <image name="Full-color-phone-wallpaper.jpg" width="480" height="800"/>
         <image name="iconDownload" width="20" height="20"/>
         <image name="iconOnline" width="20" height="19"/>
+        <image name="lyric.png" width="115" height="161"/>
         <image name="maxVolume.png" width="30" height="30"/>
         <image name="minVolume.png" width="30" height="30"/>
         <image name="play.png" width="256" height="256"/>

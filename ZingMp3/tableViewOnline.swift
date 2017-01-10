@@ -9,10 +9,14 @@
 import UIKit
 let kDOCUMENT_DIRECTORY_PATH =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first
 class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var txtLyric: UITextView!
     var listSong = [Song]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        blurView.isHidden = true
+        txtLyric.isHidden = true
         getData()
     }
     func getData()
@@ -34,11 +38,27 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
                     {
                         print(err)
                     }
-                                    print(url!)
+                    
+                    
+                    let lyricUrl = URL(string: "http://api.mp3.zing.vn/api/mobile/song/getlyrics?keycode=fafd463e2131914934b73310aa34a23f&requestdata={\"id\":\"\(id)\"}".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
+                    
+                    var lyricStringData = ""
+                    
+                    do {
+                        lyricStringData = try String(contentsOf: lyricUrl!)
+                    } catch let error as NSError {
+                        print(error)
+                    }
+                    
+                    let lyricJson = self.convertStringtoDictionary(string: lyricStringData)
                     let json = self.convertStringtoDictionary(string: stringData)
-                    if (json != nil)
-                    {
-                        self.addSongtoList(json: json!)
+                    
+                    //                    print(stringData)
+                    //                    let json = self.convertStringToDictionary(stringData)
+                    
+                    if (json != nil) {
+                        self.addSongtoList(json: json!, lyricJson: lyricJson!)
+                        //                        print(lyricJson!)
                     }
                     
                 })
@@ -64,16 +84,26 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         }
         return nil
     }
-    func addSongtoList(json: [String: AnyObject])
+    func addSongtoList(json: [String: AnyObject], lyricJson: [String: AnyObject])
     {
         let title = json["title"] as! String
         let artistName = json["artist"] as! String
         let thumbnail = json["thumbnail"] as! String
         let source = json["source"]!["128"] as! String
-        let lyric = json["lyrics_file"] as! String
-        print(lyric)
+        var lyric = lyricJson["content"] as! String
+        if lyric == ""
+        {
+            let returnLyric = "Khong co loi"
+            lyric = returnLyric
+            print("Khong co loi")
+            
+        }
+        //        else {
+        //            print(lyric)
+        //        }
         let currentSong = Song(title: title, artistName: artistName, thumbnail: thumbnail, source: source, lyrics: lyric)
-            listSong.append(currentSong)
+        //        print(currentSong)
+        listSong.append(currentSong)
         DispatchQueue.main.async {
             self.myTableView.reloadData()
         }
@@ -121,10 +151,9 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         dictData.setValue(song.title, forKey: "title")
         dictData.setValue(song.artistName, forKey: "artistName")
         dictData.setValue("/\(song.title)/thumbnail.png", forKey: "localThumbnail")
-        print("/\(song.title)/thumbnail.png")
+        //        print("/\(song.title)/thumbnail.png")
         dictData.setValue(song.sourceOnline, forKey: "sourceOnline")
-        dictData.setValue(song.lyric, forKey: "lyrics_file")
-
+        dictData.setValue(song.lyric, forKey: "lyric")
         //writing info
         writeDatatoPath(data: dictData, path: "\(path)/info.plist")
         // writing thumbnail
@@ -133,37 +162,45 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         writeDatatoPath(data: dataThumbnail, path: "\(path)/thumbnail.png")
         
         
-        var returnString = "Không có lời. Ahihi"
-        if song.lyric != "" {
-            let url = URL(string: song.lyric)!
-            //            returnString = try! String(contentsOf: url, encoding: NSUTF8StringEncoding)
-            returnString = try! String(contentsOf: url, encoding: String.Encoding.utf8)
-            print(url)
-        }
+        // var returnString = "Không có lời. Ahihi"
+        //        if song.lyric != "" {
+        //            let url = URL(string: song.lyric)!
+        //            returnString = try! String(contentsOf: url, encoding: NSUTF8StringEncoding)
+        //            returnString = try! String(contentsOf: url, encoding: String.Encoding.utf8)
+        //            print(url)
+        //        }
         
         // download + write to file
         
-        do {
-            
-            try returnString.write(toFile: "\(path)/lyrics_file.txt", atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            print("xyz")
-        }}
-    
-    
-
+        //        do {
+        //
+        //            try returnString.write(toFile: "\(path)/lyrics_file.txt", atomically: true, encoding: String.Encoding.utf8)
+        //        } catch {
+        //            print("xyz")
+        //        }}
+        //
+        
+    }
     
     // UItableViewDelegate
     //    func numberOfSections(in tableView: UITableView) -> Int {
     //        return listSong.count
     //
     //    }
+    func lyric(_ audioPlayer: AudioPlayer) {
+        
+        blurView.isHidden = false
+        txtLyric.isHidden = false
+        
+        txtLyric.text = audioPlayer.lyric
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.imageView?.image = listSong[indexPath.row].thumbnail
         cell.textLabel?.text = "\(listSong[indexPath.row].title) Ca Sỹ: \(listSong[indexPath.row].artistName)"
-
+        
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
@@ -174,6 +211,10 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         let audioPlayer = AudioPlayer.sharedInstance
         audioPlayer.pathString = listSong[indexPath.row].sourceOnline
         audioPlayer.titleSong = "\(listSong[indexPath.row].title) Ca sy: \(listSong[indexPath.row].artistName)"
+        audioPlayer.generalListSongs = listSong
+        audioPlayer.songPosition = indexPath.row
+        audioPlayer.isLocalSong = false
+        audioPlayer.setupInfo()
         audioPlayer.setupAudio()
         
         NotificationCenter.default.post(name:  Notification.Name(rawValue: "setUpObjAudio"), object: nil)

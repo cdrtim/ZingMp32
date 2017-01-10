@@ -17,14 +17,32 @@ class AudioPlayer{
     private init() {
     }
     
+    
     var pathString = ""
     var repeating = false
     var playing = false
     var duration = Float()
     var currentTime = Float()
     var titleSong = ""
+    var lyric = ""
+    var lyricShowing = true
+    var generalListSongs = [Song]()
+    var songPosition: Int!
+    var isLocalSong : Bool!
+    
     var player = AVPlayer()
     
+    func setupInfo(){
+        if  isLocalSong == true {
+            pathString = generalListSongs[songPosition].sourceLocal
+        } else {
+            pathString = generalListSongs[songPosition].sourceOnline
+        }
+        
+        titleSong = "\(generalListSongs[songPosition].title)  Ca sy: \(generalListSongs[songPosition].artistName)"
+        lyric = generalListSongs[songPosition].lyric
+    print(lyric)
+    }
     
     func setupAudio()
     {
@@ -50,6 +68,14 @@ class AudioPlayer{
     
     
     //action
+    
+    func action_lyric(){
+        if (lyricShowing == false){
+            lyricShowing = true
+        } else {
+            lyricShowing = false
+        }
+    }
     func Repeat(_ repeatSong: Bool) {
         if(repeatSong == true){
             repeating = true

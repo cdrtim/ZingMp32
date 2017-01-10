@@ -26,6 +26,8 @@
 		810E6D8C1E1F40D900C6DB64 /* LocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D8B1E1F40D900C6DB64 /* LocalView.swift */; };
 		810E6D901E1F8DCB00C6DB64 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D8F1E1F8DCB00C6DB64 /* AudioPlayerView.swift */; };
 		810E6D941E1F8EE000C6DB64 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810E6D931E1F8EE000C6DB64 /* AudioPlayer.swift */; };
+		810E6D9E1E24864600C6DB64 /* lyric_hightlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D9C1E24864600C6DB64 /* lyric_hightlight.png */; };
+		810E6D9F1E24864600C6DB64 /* lyric.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E6D9D1E24864600C6DB64 /* lyric.png */; };
 		81B02EF81E1CF9110062543E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B02EF71E1CF9110062543E /* AppDelegate.swift */; };
 		81B02EFD1E1CF9110062543E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B02EFB1E1CF9110062543E /* Main.storyboard */; };
 		81B02EFF1E1CF9110062543E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81B02EFE1E1CF9110062543E /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		810E6D8F1E1F8DCB00C6DB64 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
 		810E6D931E1F8EE000C6DB64 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		810E6D951E23329A00C6DB64 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		810E6D9C1E24864600C6DB64 /* lyric_hightlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lyric_hightlight.png; sourceTree = "<group>"; };
+		810E6D9D1E24864600C6DB64 /* lyric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lyric.png; sourceTree = "<group>"; };
 		81B02EF41E1CF9110062543E /* ZingMp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZingMp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B02EF71E1CF9110062543E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81B02EFC1E1CF9110062543E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		81B02F091E1CFB0B0062543E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				810E6D9C1E24864600C6DB64 /* lyric_hightlight.png */,
+				810E6D9D1E24864600C6DB64 /* lyric.png */,
 				810E6D541E1DECB900C6DB64 /* duration.png */,
 				810E6D551E1DECB900C6DB64 /* Full-color-phone-wallpaper.jpg */,
 				810E6D561E1DECB900C6DB64 /* iconOnline.png */,
@@ -229,9 +235,11 @@
 				810E6D601E1DECB900C6DB64 /* iconOnline.png in Resources */,
 				810E6D621E1DECB900C6DB64 /* minVolume.png in Resources */,
 				810E6D631E1DECB900C6DB64 /* pause.png in Resources */,
+				810E6D9E1E24864600C6DB64 /* lyric_hightlight.png in Resources */,
 				810E6D611E1DECB900C6DB64 /* maxVolume.png in Resources */,
 				81B02EFF1E1CF9110062543E /* Assets.xcassets in Resources */,
 				810E6D661E1DECB900C6DB64 /* thumbHightLight.png in Resources */,
+				810E6D9F1E24864600C6DB64 /* lyric.png in Resources */,
 				81B02EFD1E1CF9110062543E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

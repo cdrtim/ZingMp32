@@ -10,18 +10,25 @@ import UIKit
 import AVFoundation
 
 class AudioPlayerView: UIViewController {
+    
+    
     let audioPlayer = AudioPlayer.sharedInstance
+    
+//    var lyricDelegate: ParseLyric!
     @IBOutlet weak var btn_Play: UIButton!
+    @IBOutlet weak var btn_lyric: UIButton!
     @IBOutlet weak var lbl_CurrentTime: UILabel!
     @IBOutlet weak var lbl_TotalTime: UILabel!
     @IBOutlet weak var sld_Duration: UISlider!
     @IBOutlet weak var sld_Volume: UISlider!
     @IBOutlet weak var lbl_title: UILabel!
-    var checkAddObserverAudio = false
     
+    var checkAddObserverAudio = false
+    var generalListSong = [Song]()
     override func viewDidLoad() {
         super.viewDidLoad()
         btn_Play.isEnabled = false
+        btn_lyric.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(setUpObjAudio), name: NSNotification.Name(rawValue: "setUpObjAudio"), object: nil)
         
         
@@ -34,7 +41,7 @@ class AudioPlayerView: UIViewController {
     {
         changeInfoSong()
         addThumbnailForButton()
-        
+        changeImageLyricButton()
     }
     
     func changeInfoSong()
@@ -52,12 +59,19 @@ class AudioPlayerView: UIViewController {
         }
         
     }
-    
+    func changeImageLyricButton(){
+        if (audioPlayer.lyricShowing == true) {
+            btn_lyric.setImage(UIImage(named: "lyric_hightlight.png"), for: UIControlState())
+        } else {
+            btn_lyric.setImage(UIImage(named: "lyric.png"), for: UIControlState())
+        }
+    }
     
     
     func setUpObjAudio()
     {
         lbl_title.text = audioPlayer.titleSong
+        btn_lyric.isEnabled = true
         addThumbImgForButton()
         if audioPlayer.playing && !checkAddObserverAudio
         {
@@ -67,19 +81,20 @@ class AudioPlayerView: UIViewController {
             _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeUpdate), userInfo: nil, repeats: true)
             
             
-      NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd(_:)),
+            NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd(_:)),
                                                    name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                    object: audioPlayer.player.currentItem)
         }
+        changeInfoView()
         
     }
     func playerItemDidReachEnd(_ notification: Notification) {
         if (audioPlayer.repeating)
         {
-                            audioPlayer.player.seek(to: kCMTimeZero)
+            audioPlayer.player.seek(to: kCMTimeZero)
             audioPlayer.player.play()
         }
-        
+        changeInfoView()
     }
     
     func timeUpdate(){
@@ -119,6 +134,17 @@ class AudioPlayerView: UIViewController {
     
     @IBAction func sld_Duration(_ sender: UISlider) {
         audioPlayer.sld_Duration(sender.value)
+    }
+    
+    @IBAction func action_ShowLyric(_ sender: UIButton) {
+        audioPlayer.action_lyric()
+        changeImageLyricButton()
+        //        btn_lyric.isHidden = false
+        
+    
+//        self.lyricDelegate?.lyric(audioPlayer)
+        
+        
     }
     
     @IBAction func sld_Volume(_ sender: UISlider) {

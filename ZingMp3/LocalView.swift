@@ -10,13 +10,22 @@ import UIKit
 
 class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var listSong = [Song]()
+    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var txtfield_lyric: UITextView!
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        blurView.isHidden = true
+        txtfield_lyric.isHidden = true
+        getData()
+        
+        
+        
     }
     // Do any additional setup after loading the view.
     override func viewWillAppear(_ animated: Bool  )
     {   getData()
+        myTableView.reloadData()
     }
     func getData()
     {
@@ -35,7 +44,17 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         let thumbnail = info!["localThumbnail"] as! String
                         let thumbNailPath = dir + thumbnail
                         let sourceLocal = dir + "/\(title)/\(title).mp3"
-                        let currentSong = Song(title: title, artistName: artistName, localThumbnail: thumbNailPath, localSource: sourceLocal)
+                        var lyric = info!["lyric"] as! String
+                        if lyric == "" {
+                        
+                        let returnLyric = "DD co loi"
+                            lyric = returnLyric
+//                            print(lyric)
+                        }
+                        else{
+//                         print(lyric)
+                        }
+                        let currentSong = Song(title: title, artistName: artistName, localThumbnail: thumbNailPath, localSource: sourceLocal, lyrics: lyric)
                         listSong.append(currentSong)
                     }
                 }
@@ -48,6 +67,14 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+    func lyric(_ audioPlayer: AudioPlayer) {
+        
+        blurView.isHidden = false
+        txtfield_lyric.isHidden = false
+        txtfield_lyric.text = audioPlayer.lyric
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listSong.count
     }
@@ -62,6 +89,10 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let audioPlay = AudioPlayer.sharedInstance
         audioPlay.pathString = listSong[indexPath.row].sourceLocal
         audioPlay.titleSong = listSong[indexPath.row].title + "(\(listSong[indexPath.row].artistName))"
+        audioPlay.generalListSongs = listSong
+        audioPlay.songPosition = indexPath.row
+        audioPlay.isLocalSong = true
+        audioPlay.setupInfo()
         audioPlay.setupAudio()
         NotificationCenter.default.post(name: Notification.Name(rawValue: "setUpObjAudio"), object: nil)
         
