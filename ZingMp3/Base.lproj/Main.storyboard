@@ -49,7 +49,7 @@
                                     <segue destination="vux-bh-HBK" kind="embed" identifier="FuckYou" id="nwa-b1-Bhu"/>
                                 </connections>
                             </containerView>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joh-Sf-Tc5">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joh-Sf-Tc5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -139,7 +139,7 @@
                                     <outlet property="delegate" destination="0bM-0O-hyl" id="2Ug-sT-c5k"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-6e-eaq">
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-6e-eaq">
                                 <rect key="frame" x="0.0" y="86" width="375" height="409"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -337,6 +337,6 @@
         <image name="play.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nwa-b1-Bhu"/>
+        <segue reference="Zbc-fr-Pha"/>
     </inferredMetricsTieBreakers>
 </document>
