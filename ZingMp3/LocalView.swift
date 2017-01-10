@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource, ParseLyric {
     var listSong = [Song]()
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var txtfield_lyric: UITextView!
@@ -69,12 +69,12 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func lyric(_ audioPlayer: AudioPlayer) {
         
-        blurView.isHidden = false
-        txtfield_lyric.isHidden = false
+        blurView.isHidden = !blurView.isHidden
+        txtfield_lyric.isHidden = !txtfield_lyric.isHidden
+        
         txtfield_lyric.text = audioPlayer.lyric
     }
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listSong.count
     }
@@ -90,7 +90,8 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         audioPlay.pathString = listSong[indexPath.row].sourceLocal
         audioPlay.titleSong = listSong[indexPath.row].title + "(\(listSong[indexPath.row].artistName))"
         audioPlay.generalListSongs = listSong
-        audioPlay.songPosition = indexPath.row
+        
+    audioPlay.songPosition = indexPath.row
         audioPlay.isLocalSong = true
         audioPlay.setupInfo()
         audioPlay.setupAudio()
@@ -130,7 +131,12 @@ class LocalView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FuckYou"{
+            let audioPlayerView = segue.destination as! AudioPlayerView
+            audioPlayerView.lyricDelegate = self //B6: Khởi tạo lyricDelegate, gán bằng self, self ở đây chính là class TableViewOnline đã tuân thủ delegate ParseLyric bên trên. Finish. Tìm 1 tutorial về delegate mà đọc, bài này khó hiểu vì sử dụng embed UIVIewController trong UIView. Tìm 1 bài ViewControllerA push sang ViewControllerB ấy
+        }
+    }
     
     
     

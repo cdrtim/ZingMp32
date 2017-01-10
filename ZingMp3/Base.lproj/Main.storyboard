@@ -46,7 +46,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fso-Ug-tEX">
                                 <rect key="frame" x="0.0" y="490" width="375" height="128"/>
                                 <connections>
-                                    <segue destination="vux-bh-HBK" kind="embed" id="nwa-b1-Bhu"/>
+                                    <segue destination="vux-bh-HBK" kind="embed" identifier="FuckYou" id="nwa-b1-Bhu"/>
                                 </connections>
                             </containerView>
                             <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="joh-Sf-Tc5">
@@ -157,7 +157,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LW-Od-LwB">
                                 <rect key="frame" x="0.0" y="490" width="375" height="128"/>
                                 <connections>
-                                    <segue destination="vux-bh-HBK" kind="embed" id="Zbc-fr-Pha"/>
+                                    <segue destination="vux-bh-HBK" kind="embed" identifier="FuckYou" id="Zbc-fr-Pha"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -337,6 +337,6 @@
         <image name="play.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zbc-fr-Pha"/>
+        <segue reference="nwa-b1-Bhu"/>
     </inferredMetricsTieBreakers>
 </document>

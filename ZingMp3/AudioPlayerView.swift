@@ -8,13 +8,15 @@
 
 import UIKit
 import AVFoundation
-
+protocol ParseLyric: class {
+    func lyric(_ audioPlayer: AudioPlayer)
+}
 class AudioPlayerView: UIViewController {
     
     
     let audioPlayer = AudioPlayer.sharedInstance
     
-//    var lyricDelegate: ParseLyric!
+    weak  var lyricDelegate: ParseLyric!
     @IBOutlet weak var btn_Play: UIButton!
     @IBOutlet weak var btn_lyric: UIButton!
     @IBOutlet weak var lbl_CurrentTime: UILabel!
@@ -81,10 +83,11 @@ class AudioPlayerView: UIViewController {
             _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timeUpdate), userInfo: nil, repeats: true)
             
             
-            NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd(_:)),
-                                                   name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                                   object: audioPlayer.player.currentItem)
+            
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd(_:)),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: audioPlayer.player.currentItem)
         changeInfoView()
         
     }
@@ -93,20 +96,32 @@ class AudioPlayerView: UIViewController {
         {
             audioPlayer.player.seek(to: kCMTimeZero)
             audioPlayer.player.play()
-        }
-        changeInfoView()
-    }
+        }else {
+            audioPlayer.playing = false
+            changeInfoView()
+        }}
     
     func timeUpdate(){
+        // Ham tinh tong thoi gian cua 1 bai hat
         audioPlayer.duration = Float((audioPlayer.player.currentItem?.duration.value)!)/Float((audioPlayer.player.currentItem?.duration.timescale)!)
+        
+        // Ham tinh thoi gian hien tai tinh bang second
+        // exp: 100s
         audioPlayer.currentTime = Float(audioPlayer.player.currentTime().value)/Float(audioPlayer.player.currentTime().timescale)
         
-        let m = Int(floor(audioPlayer.currentTime/60))
-        let s = Int(round(audioPlayer.currentTime - Float(m)*60))
+        // tinh phut cua bai hat 
+        // exp: 100/60 = 1,4... floor(1,4..) = 1 => m = 1
+        var m = Int(floor(audioPlayer.currentTime/60))
+        var s = Int(round(audioPlayer.currentTime - Float(m)*60))
         if (audioPlayer.duration > 0)
         {
             let mduration = Int(floor(audioPlayer.duration/60))
             let sdduration = Int(round(audioPlayer.duration - Float(mduration)*60))
+            if s == 60
+            {
+            m = m + 1
+            s = 0
+            }
             self.lbl_CurrentTime.text = String(format: "%02d", m) + ":" + String(format: "%02d", s)
             self.lbl_TotalTime.text = String(format: "%02d", mduration) + ":" + String(format: "%02d", sdduration)
             self.sld_Duration.value = Float(audioPlayer.currentTime/audioPlayer.duration)
@@ -141,8 +156,8 @@ class AudioPlayerView: UIViewController {
         changeImageLyricButton()
         //        btn_lyric.isHidden = false
         
-    
-//        self.lyricDelegate?.lyric(audioPlayer)
+        
+        self.lyricDelegate?.lyric(audioPlayer)
         
         
     }

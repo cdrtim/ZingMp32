@@ -8,7 +8,7 @@
 
 import UIKit
 let kDOCUMENT_DIRECTORY_PATH =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first
-class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDelegate,ParseLyric {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var txtLyric: UITextView!
@@ -95,7 +95,7 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         {
             let returnLyric = "Khong co loi"
             lyric = returnLyric
-            print("Khong co loi")
+//            print("Khong co loi")
             
         }
         //        else {
@@ -189,8 +189,8 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     //    }
     func lyric(_ audioPlayer: AudioPlayer) {
         
-        blurView.isHidden = false
-        txtLyric.isHidden = false
+        blurView.isHidden =   !blurView.isHidden
+        txtLyric.isHidden = !txtLyric.isHidden
         
         txtLyric.text = audioPlayer.lyric
     }
@@ -236,4 +236,11 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FuckYou"{
+            let audioPlayerView = segue.destination as! AudioPlayerView
+            audioPlayerView.lyricDelegate = self //B6: Khởi tạo lyricDelegate, gán bằng self, self ở đây chính là class TableViewOnline đã tuân thủ delegate ParseLyric bên trên. Finish. Tìm 1 tutorial về delegate mà đọc, bài này khó hiểu vì sử dụng embed UIVIewController trong UIView. Tìm 1 bài ViewControllerA push sang ViewControllerB ấy
+        }
+    }
+    
 }

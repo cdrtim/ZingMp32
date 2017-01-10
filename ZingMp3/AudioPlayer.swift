@@ -41,7 +41,7 @@ class AudioPlayer{
         
         titleSong = "\(generalListSongs[songPosition].title)  Ca sy: \(generalListSongs[songPosition].artistName)"
         lyric = generalListSongs[songPosition].lyric
-    print(lyric)
+//    print(lyric)
     }
     
     func setupAudio()
