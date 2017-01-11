@@ -95,15 +95,11 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
         {
             let returnLyric = "Khong co loi"
             lyric = returnLyric
-//            print("Khong co loi")
             
         }
-        //        else {
-        //            print(lyric)
-        //        }
+       
         let currentSong = Song(title: title, artistName: artistName, thumbnail: thumbnail, source: source, lyrics: lyric)
-        //        print(currentSong)
-        listSong.append(currentSong)
+              listSong.append(currentSong)
         DispatchQueue.main.async {
             self.myTableView.reloadData()
         }
@@ -239,7 +235,7 @@ class tableViewOnline: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FuckYou"{
             let audioPlayerView = segue.destination as! AudioPlayerView
-            audioPlayerView.lyricDelegate = self //B6: Khởi tạo lyricDelegate, gán bằng self, self ở đây chính là class TableViewOnline đã tuân thủ delegate ParseLyric bên trên. Finish. Tìm 1 tutorial về delegate mà đọc, bài này khó hiểu vì sử dụng embed UIVIewController trong UIView. Tìm 1 bài ViewControllerA push sang ViewControllerB ấy
+            audioPlayerView.lyricDelegate = self //B6: Khởi tạo lyricDelegate, gán bằng self, self ở đây chính là class TableViewOnline đã tuân thủ delegate ParseLyric bên trên. Finish. Tìm 1 tutorial về delegate đọc, bài này khó hiểu vì sử dụng embed UIVIewController trong UIView. Tìm 1 bài ViewControllerA push sang ViewControllerB ấy
         }
     }
     
